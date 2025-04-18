@@ -1,0 +1,199 @@
+/* main-container */
+.container{
+    border: 1px solid rgb(200, 192, 192);
+    padding: 15px;
+    margin: 10px;
+}
+
+/* button container */
+.btn-container{
+    display: flex;
+    gap: 20px;
+    padding: 6px;
+}
+
+/* button that is under a tag */
+.btn-container>a>button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+}
+
+/* removing anchor default style */
+.btn-container>a{
+    text-decoration: none;
+}
+
+
+/* all buttons */
+
+.btn-1{
+    background-color: skyblue;
+    color: white;
+}
+
+.btn-2{
+    background-color: red;
+    color: white;
+}
+
+.btn-3{
+    background-color: black;
+    color: white;
+}
+
+.btn-4{
+    background-color: orangered;
+    color: white;
+}
+
+.btn-5{
+    background-color: yellowgreen;
+    color: white;
+}
+
+/* Europe */
+
+#europe>h2{
+    color: blue;
+}
+
+#europe:hover h2{
+    color: white;
+}
+
+#europe li{
+    color: peru;
+}
+/* when hovering on parent container effects will be applied on li */
+#europe:hover li{
+    color: white;
+}
+
+/* when hovered */
+#europe:hover{
+    background-color: skyblue;
+    color: whitesmoke;
+    border-radius: 20px;
+    padding: 10px;
+    transition-duration: 500ms;
+}
+
+/* Asia */
+
+#asia>h2{
+    color: red;
+}
+
+#asia:hover h2{
+    color: white;
+}
+
+#asia li{
+    color: brown;
+}
+/* when hovering on parent container effects will be applied on li */
+#asia:hover li{
+    color: white;
+}
+/* when hovered */
+#asia:hover{
+    background-color: red;
+    color: whitesmoke;
+    border-radius: 20px;
+    padding: 10px;
+    transition-duration: 500ms;
+}
+
+
+/* America */
+
+#america>h2{
+    color: purple;
+}
+
+#america:hover h2{
+    color: white;
+}
+
+#america li{
+    color: rgb(202, 30, 30);
+}
+
+/* when hovering on parent container effects will be applied on li */
+#america:hover li{
+    color: white;
+}
+
+/* when hovered */
+#america:hover{
+    background-color: maroon;
+    color: whitesmoke;
+    border-radius: 20px;
+    padding: 10px;
+    transition-duration: 500ms;
+}
+
+
+/* Africa */
+
+#africa>h2{
+    color: green;
+}
+
+#africa:hover h2{
+    color: white;
+}
+
+#africa li{
+    color: goldenrod;
+}
+
+/* when hovering on parent container effects will be applied on li */
+#africa:hover li{
+    color: white;
+}
+/* when hovered */
+#africa:hover{
+    background-color: green;
+    color: whitesmoke;
+    border-radius: 20px;
+    padding: 10px;
+    transition-duration: 500ms;
+}
+
+
+/* Australia */
+
+#australia>h2{
+    color: rgb(121, 121, 0);
+}
+
+#australia:hover h2{
+    color: white;
+}
+
+#australia li{
+    color: yellowgreen;
+}
+
+/* when hovering on parent container effects will be applied on li */
+#australia:hover li{
+    color: white;
+}
+
+/* when hovered */
+#australia:hover{
+    background-color: rgb(198, 198, 5);
+    color: whitesmoke;
+    border-radius: 20px;
+    padding: 10px;
+    transition-duration: 500ms;
+}
+
+
+hr{
+    border: 1px solid lightgray;
+}

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Travel Stories</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Style the table */
+
+      .main-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        font-family: "Roboto Condensed", sans-serif;
+      }
+
+      table {
+        width: 60%;
+        border-collapse: collapse;
+        margin: 20px auto;
+      }
+
+      th,
+      td {
+        border: 1px dashed goldenrod;
+        text-align: center;
+        padding: 15px;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      img {
+        width: 150px;
+        height: auto;
+        cursor: pointer;
+        border-radius: 10px;
+      }
+
+      img:hover {
+        transform: scale(0.9);
+        transition-duration: 500ms;
+        opacity: 70%;
+      }
+
+      .paris-row {
+        background-color: rgb(210, 231, 231);
+      }
+
+      .rome-row {
+        background-color: rgb(231, 220, 190);
+      }
+
+      .newyork-row {
+        background-color: rgba(165, 159, 151, 0.44);
+      }
+
+      /* Style for the information sections */
+      .info-section {
+        margin: 50px auto;
+        width: 80%;
+        padding: 20px;
+        border: 1px solid #ddd;
+        background-color: burlywood;
+        color: white;
+      }
+
+      .info-section:hover {
+        margin: 50px auto;
+        background-color: red;
+        color: white;
+        transform: scale(1.1);
+        transition-duration: 500ms;
+        cursor: pointer;
+      }
+
+      .info-section h3 {
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body class="main-container">
+    <!-- Title of the Page -->
+    <h1
+      style="
+        text-align: center;
+        color: white;
+        background-color: red;
+        border-radius: 10px;
+      "
+    >
+      Travel Destinations
+    </h1>
+
+    <!-- Travel Table with clickable attraction images -->
+    <table>
+      <tr>
+        <th
+          style="
+            color: white;
+            background-color: darkseagreen;
+            font-weight: bold;
+          "
+        >
+          Destination
+        </th>
+        <th
+          style="
+            color: white;
+            background-color: darkseagreen;
+            font-weight: bold;
+          "
+        >
+          Attraction
+        </th>
+      </tr>
+      <tr class="paris-row">
+        <td><h3 style="background-color: purple; color: white">Paris</h3></td>
+        <td>
+          <!-- Eiffel Tower image links to info section at bottom -->
+          <a href="#paris-info">
+            <img src="https://i.ibb.co/yn8GyZTS/paris.jpg" alt="Eiffel Tower" />
+          </a>
+        </td>
+      </tr>
+      <tr class="rome-row">
+        <td><h3 style="background-color: brown; color: white">Rome</h3></td>
+        <td>
+          <!-- Colosseum image links to info section at bottom -->
+          <a href="#rome-info">
+            <img src="https://i.ibb.co/j9J1qWtZ/rome.jpg" alt="Colosseum" />
+          </a>
+        </td>
+      </tr>
+      <tr class="newyork-row">
+        <td>
+          <h3 style="background-color: navy; color: #fafafa">New York</h3>
+        </td>
+        <td>
+          <!-- Statue of Liberty image links to info section at bottom -->
+          <a href="#ny-info">
+            <img
+              src="https://i.ibb.co/cS3TXscD/ny.jpg"
+              alt="Statue of Liberty"
+            />
+          </a>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Paris Information Section -->
+    <div id="paris-info" class="info-section">
+      <h3>Paris - Eiffel Tower</h3>
+      <p>
+        The Eiffel Tower is one of the most iconic landmarks in the world.
+        Located in the heart of Paris, it offers panoramic views of the city and
+        is a must-visit for every traveler.
+      </p>
+    </div>
+
+    <!-- Rome Information Section -->
+    <div id="rome-info" class="info-section">
+      <h3>Rome - Colosseum</h3>
+      <p>
+        The Colosseum is an ancient amphitheater in Rome and a symbol of the
+        Roman Empire. It once hosted gladiator contests and public spectacles.
+      </p>
+    </div>
+
+    <!-- New York Information Section -->
+    <div id="ny-info" class="info-section">
+      <h3>New York - Statue of Liberty</h3>
+      <p>
+        The Statue of Liberty is a universal symbol of freedom. Located on
+        Liberty Island, it welcomes visitors arriving by sea and is a cherished
+        landmark of the United States.
+      </p>
+    </div>
+  </body>
+</html>
