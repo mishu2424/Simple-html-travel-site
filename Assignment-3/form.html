@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+
+      /* Form section */
+      .form-container {
+        width: 90vw;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #e3d7d7;
+        border: none;
+        border-radius: 10px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      input[type="text"],
+      input[type="email"],
+      textarea,
+      select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 4px;
+        box-sizing: border-box;
+        border-radius: 10px;
+        border-color: transparent;
+      }
+      .radio-group {
+        display: flex;
+        gap: 10px;
+        margin-top: 5px;
+      }
+
+      /* Buttons */
+      #submitBtn {
+        background-color: rgb(104, 185, 217);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+      }
+      #previewBtn {
+        background-color: black;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Tablet devices (width between 600px and 900px) */
+      @media (max-width: 900px) and (min-width: 601px) {
+        .form-container {
+          width: 95vw;
+          padding: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+          font-size: 1rem;
+        }
+
+        #submitBtn,
+        #previewBtn {
+          width: 100%;
+          margin-top: 10px;
+        }
+      }
+
+      /* Phone devices (width 600px and below) */
+      @media (max-width: 600px) {
+        .form-container {
+          width: 80vw;
+          padding: 10px;
+          border-radius: 0;
+        }
+
+        .form-group {
+          margin-bottom: 12px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+          font-size: 1rem;
+        }
+
+        .radio-group {
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        h6 {
+          margin: 0;
+        }
+
+        #submitBtn,
+        #previewBtn {
+          width: 100%;
+          padding: 12px;
+          font-size: 1rem;
+          margin-top: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Contact Us</h2>
+      <form id="contactForm" method="POST">
+        <!-- Name section -->
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input required type="text" id="name" name="name" />
+        </div>
+
+        <!-- Email section -->
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <span
+            ><small style="font-weight: 100"
+              >Email must be in the format example@something.com</small
+            ></span
+          >
+          <input
+            required
+            type="email"
+            id="email"
+            name="email"
+            pattern="[a-z0-9]+@[a-z]+\.(com)"
+            title="Email must be in the format example@something.com"
+          />
+        </div>
+
+        <!-- Phone number section -->
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <span
+            ><small style="font-weight: 100"
+              >Phone number must be exactly 10 digits.</small
+            ></span
+          >
+          <input
+            title="Phone number must be exactly 10 digits."
+            pattern="\d{10}"
+            required
+            type="text"
+            id="phone"
+            name="phone"
+          />
+        </div>
+
+        <!-- comment section -->
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea required id="message" name="message" rows="4"></textarea>
+        </div>
+
+        <!-- Contact method section -->
+        <div class="form-group">
+          <label>Preferred Contact Method:</label>
+          <div class="radio-group">
+            <h6>
+              <label
+                ><input
+                  type="radio"
+                  name="contactMethod"
+                  value="Email"
+                  checked
+                />
+                Email</label
+              >
+            </h6>
+            <h6>
+              <label
+                ><input type="radio" name="contactMethod" value="Phone" />
+                Phone</label
+              >
+            </h6>
+            <h6>
+              <label
+                ><input type="radio" name="contactMethod" value="Both" />
+                Both</label
+              >
+            </h6>
+          </div>
+        </div>
+
+        <!-- Inquiry section -->
+        <div class="form-group">
+          <label for="inquiryType">Inquiry Type:</label>
+          <select required id="inquiryType" name="inquiryType">
+            <option value="" disabled selected>Select an option</option>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Support Request">Support Request</option>
+            <option value="Feedback">Feedback</option>
+          </select>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" id="submitBtn">Submit</button>
+        <!--  -->
+        <button
+          type="button"
+          id="previewBtn"
+          formmethod="GET"
+          onclick="previewForm()"
+        >
+          Preview
+        </button>
+      </form>
+
+      <!-- It will show the values of input fields while being clicked on preview button. -->
+      <div id="preview"></div>
+    </div>
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          // preventing refresh while submitting.
+          e.preventDefault();
+
+          // getting the values from input fields.
+          const name = e.target.name.value;
+          const email = e.target.email.value;
+          const phoneNumber = e.target.phone.value;
+          const message = e.target.message.value;
+          const inquiryType = e.target.inquiryType.value;
+          const contactMethod = e.target.contactMethod.value;
+
+          console.log(
+            name,
+            email,
+            phoneNumber,
+            message,
+            inquiryType,
+            contactMethod
+          );
+          if (
+            name &&
+            email &&
+            phoneNumber &&
+            message &&
+            inquiryType &&
+            contactMethod
+          ) {
+            alert("Form submitted successfully!");
+          }
+        });
+
+      //shows all the information before user submits the data. (GET)
+      function previewForm() {
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const message = document.getElementById("message").value.trim();
+        const contactMethod = document.querySelector(
+          'input[name="contactMethod"]:checked'
+        ).value;
+        const inquiryType = document.getElementById("inquiryType").value;
+
+        // If user doesn't fill out all the forms.
+        if (
+          !(name && email && phone && message && inquiryType && contactMethod)
+        ) {
+          return alert("Please Fill out all the input fields first");
+        }
+
+        // Inserting html tags conditionally
+        const previewHTML = `
+        <h3>Preview</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Message:</strong> ${message}</p>
+        <p><strong>Preferred Contact Method:</strong> ${contactMethod}</p>
+        <p><strong>Inquiry Type:</strong> ${inquiryType}</p>
+      `;
+
+        document.getElementById("preview").innerHTML = previewHTML;
+      }
+    </script>
+  </body>
+</html>
