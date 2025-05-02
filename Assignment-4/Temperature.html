@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temperature Conversion</title>
+    <link rel="stylesheet" href="./temperature.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="main-container">
+      <div class="box">
+        <form style="width: 100%">
+          <div style="width: 100%">
+            <label for="temperatureVal">Temperature value:</label>
+            <input
+              required
+              id="temperatureVal"
+              type="text"
+              placeholder="Enter the value of temperature"
+              class="temp-field"
+            />
+            <!-- By default, it is hidden, will be removed dynamically -->
+            <span class="temp-error-text hidden" id="tempError"
+              >Temperature has to be a number type</span
+            >
+          </div>
+          <div style="width: 100%">
+            <label for="temperature">Choose a Temperature Conversion:</label>
+            <select
+              required
+              name="temperature"
+              id="temperature"
+              class="temp-conversion-field"
+            >
+              <option value="">Please select an option</option>
+              <option value="celsius">Celsius To Fahrenheit</option>
+              <option value="fahrenheit">Fahrenheit To Celsius</option>
+            </select>
+            <!-- By default, it is hidden, will be removed dynamically -->
+            <span
+              class="temp-conversion-error-text hidden"
+              id="tempConversionError"
+              >Please choose an option</span
+            >
+          </div>
+          <input
+            value="Convert"
+            id="submitBtn"
+            type="submit"
+            class="convertBtn"
+          />
+
+          <h3 id="displayTemp" class="tempDisplay"></h3>
+        </form>
+      </div>
+    </section>
+    <script src="./temperature.js"></script>
+  </body>
+</html>
