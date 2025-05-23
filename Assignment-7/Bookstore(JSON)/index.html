@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookstore</title>
+  </head>
+  <body>
+    <h1>Bookstore Inventory</h1>
+    <ul id="bookList"></ul>
+
+    <script>
+      fetch("books.json")
+        .then((response) => response.json())
+        .then((data) => {
+          const books = data.books;
+          const parentList = document.querySelector("#bookList");
+          books.map((book) => {
+            const li = document.createElement("li");
+            li.style.marginTop = "20px";
+            // Check availability and style accordingly
+            const availableStyle = book?.available
+              ? "color: green;"
+              : "color: red;";
+            li.innerHTML = `<strong>${book?.title}</strong><br>
+            Author: ${book?.author?.firstName} ${book?.author?.lastName}<br>
+            Publication Year: ${book?.publicationYear}<br>
+            Publisher: ${book?.details?.publisher}<br>
+            Page Count: ${book?.details?.pageCount}<br>
+            <span style="${availableStyle}">Available: ${book?.available}</span>`;
+            parentList.appendChild(li);
+          });
+        });
+    </script>
+  </body>
+</html>

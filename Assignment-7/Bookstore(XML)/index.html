@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookstore</title>
+  </head>
+  <body>
+    <h1>Bookstore Inventory</h1>
+    <ul id="bookList"></ul>
+
+    <script>
+      fetch('books.xml')
+        .then(response => response.text()) // Get the XML text content
+        .then(xmlText => {
+          const parser = new DOMParser();
+          const xmlDoc = parser.parseFromString(xmlText, 'application/xml');
+
+          // Get all the book elements
+          const books = xmlDoc.getElementsByTagName('book');
+          const parentList = document.querySelector('#bookList');
+          
+          // Loop through each book and generate the HTML content
+          Array.from(books).forEach(book => {
+            console.log(book);
+            const titleElement = book.querySelector('title');
+            const title = titleElement ? titleElement.firstChild.nodeValue.trim() : ''; // Extracting the title text
+            const publicationYear = titleElement ? titleElement.querySelector('publicationYear')?.textContent.trim() : '';
+            const publisher = book.querySelector('publisher')?.textContent.trim() || 'N/A';
+            const pageCount = book.querySelector('pageCount')?.textContent.trim() || 'N/A';
+            const authorFirstName = book.querySelector('author > firstName')?.textContent.trim() || 'N/A';
+            const authorLastName = book.querySelector('author > lastName')?.textContent.trim() || 'N/A';
+            const available = book.getAttribute('available') === 'true';
+
+            // Conditional styling for availability
+            const availableStyle = available ? 'color: green;' : 'color: red;';
+
+            // Create the list item
+            const li = document.createElement('li');
+            li.style.marginTop = '20px';
+            li.innerHTML = `
+              <strong>${title}</strong><br>
+              Author: ${authorFirstName} ${authorLastName}<br>
+              Publication Year: ${publicationYear}<br>
+              Publisher: ${publisher}<br>
+              Page Count: ${pageCount}<br>
+              <span style="${availableStyle}">Available: ${available}</span>
+            `;
+            parentList.appendChild(li);
+          });
+        })
+        .catch(error => console.error('Error loading the XML file:', error));
+    </script>
+  </body>
+</html>
